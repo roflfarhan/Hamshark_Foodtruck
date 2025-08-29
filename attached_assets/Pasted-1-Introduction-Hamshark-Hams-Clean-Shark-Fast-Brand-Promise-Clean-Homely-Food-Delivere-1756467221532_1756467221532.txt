@@ -1,0 +1,139 @@
+1. Introduction
+
+Hamshark = Hams (Clean) + Shark (Fast)
+Brand Promise: “Clean, Homely Food, Delivered Fast.”
+
+Hamshark is a food truck startup that combines multi-cuisine offerings, convenience, and personalization to cater to students, IT professionals, and local communities.
+
+2. Branding & Design System
+
+Primary Colors: Black (background, boldness) + Yellow (#FFD300 for accents, highlights).
+
+Secondary Colors:
+
+Warm Red/Orange (for food accents, appetizing feel).
+
+Fresh Green (for vegetarian/healthy menu cues).
+
+White/Grey (for readability & balance).
+
+Typography: Bold Sans Serif (Poppins / Inter) for headings, clean sans-serif for body.
+
+Mood: Urban, modern, trustworthy, cozy + fast.
+
+3. Core Website Features
+3.1 Landing Page
+
+Hero banner with animated truck + tagline (“Hamshark – Clean Food, Served Fast”).
+
+Call-to-action: “Find a Truck Near You”.
+
+Food photo carousel with Framer Motion fade effects.
+
+3.2 Cuisine & Menu Explorer
+
+Extensive Indian + Subcontinent cuisines (North, South, Bengali, Punjabi, Gujarati, Maharashtrian, Kashmiri, Hyderabadi, Nepali, Bangladeshi, Sri Lankan, Pakistani).
+
+Food cards with:
+
+Image → Hover animation.
+
+Tags → (Veg / Non-Veg / Spicy / Healthy).
+
+Customization → Spice, add-ons, portion size.
+
+“Chef’s Special” & “Student Combo Meals.”
+
+3.3 Truck Locator & Schedule
+
+Google Maps API integration → Live truck location.
+
+Truck Timetable: Show daily timings, special stops (IT hubs, college campuses).
+
+Radius Logic: Highlight trucks only within 5 km.
+
+Truck availability toggle: Open/Closed status.
+
+3.4 Ordering & Subscriptions
+
+Cart & checkout with digital wallet integration (UPI, Razorpay, Stripe).
+
+Meal subscriptions (Weekly, Monthly) → cheaper pricing.
+
+Combo deals (Breakfast, Lunch, Dinner packs).
+
+Family meal packs for office groups.
+
+3.5 Loyalty & Rewards
+
+Gamified reward points → progress bar + yellow glow.
+
+Badges for “Frequent Eater,” “Student Saver,” etc.
+
+Referral system with discounts.
+
+3.6 Nutrition & Cleanliness Transparency
+
+Each meal card shows calories, protein, carb, fat info.
+
+“Hams Promise” → Cleanliness certification, kitchen photos, staff hygiene checklist.
+
+3.7 Events & Catering
+
+Truck booking for college fests, office events, parties.
+
+Pre-order system for large group meals.
+
+3.8 CSR / Brand Story Section
+
+“Hamshark Care” → leftover food donation to NGOs.
+
+Eco-friendly packaging pledge → biodegradable boxes.
+
+“Meet Our Chefs” → human touch storytelling.
+
+3.9 Testimonials & Community
+
+Student and IT pro reviews.
+
+Animated star ratings (yellow stars).
+
+Social media integrations (Instagram reels, food pics).
+
+4. Non-Functional Requirements
+
+Responsiveness: Grid-based layout, works seamlessly on mobile, tablet, desktop.
+
+Performance: Fast load (< 3s), optimized images.
+
+Accessibility: High contrast, ARIA labels, alt-text for images.
+
+Scalability: Multiple trucks per city.
+
+Security: Encrypted payments, GDPR-compliant data storage.
+
+5. Extra Startup-Centric Additions
+
+Truck Fleet Management Dashboard (admin side).
+
+Push Notifications → Truck arrival alerts, discounts.
+
+AI Recommendation Engine → Suggest meals based on past orders.
+
+Student Pricing Mode → Affordable “budget menu.”
+
+Offline Mode → Show cached menus if internet weak.
+
+6. Animation Guidelines (Framer Motion)
+
+Hero Section: Truck illustration slides in from left, tagline fades in.
+
+Food Cards: Scale-up & glow yellow on hover.
+
+Truck Locator Map: Pulsating yellow glow markers.
+
+Progress Bars (Loyalty): Smooth filling animations.
+
+Section Transitions: Fade-in on scroll.
+
+Order Buttons: “Bounce” effect when clicked.

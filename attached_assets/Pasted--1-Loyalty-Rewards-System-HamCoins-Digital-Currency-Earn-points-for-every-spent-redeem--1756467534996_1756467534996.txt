@@ -1,0 +1,103 @@
+🎯 1. Loyalty & Rewards System
+
+HamCoins (Digital Currency): Earn points for every ₹ spent → redeem for discounts/free meals.
+
+Tiered Membership (Gamification):
+
+🥉 Bronze (entry level).
+
+🥈 Silver (after 500 HamCoins).
+
+🥇 Gold (free birthday meal + priority service).
+
+💎 Shark Elite (special menu access, invite-only).
+
+Milestone Rewards: Free drink after 10 meals, free dessert after 20 meals, etc.
+
+📦 2. Membership Plans
+
+Student Saver Plan: Affordable weekly/monthly packages (e.g., 30 meals for ₹2,499).
+
+IT Pro Plan: Customizable lunch packs with recurring subscriptions.
+
+Family / Group Plan: Multiple meals bundled at a discount.
+
+Shark Club: Paid membership (₹199/month) → gets free delivery, priority queue, exclusive dishes.
+
+🍲 3. Personalized Experience
+
+AI-Based Recommendations: Suggest meals based on past orders & dietary preferences.
+
+Meal Customization: Choose spice level, portion size, add-ons (extra paneer, cheese, etc.).
+
+Diet Modes: Veg-only, Keto, High-Protein, Low-Carb options.
+
+Favorite Reorder Button: One-tap reorder of “usual meal.”
+
+🛒 4. Ordering & Convenience
+
+Pre-Order & Pick-Up: Order online → collect from truck (skip the line).
+
+Truck Live Tracking: GPS tracker → see when the truck is near your office/college.
+
+Order Ahead for Groups: Shareable group order link → friends/colleagues can add their meals before checkout.
+
+Offline Ordering via QR Code: QR codes on truck → open menu instantly.
+
+🌟 5. Gamification & Engagement
+
+Spin-the-Wheel Discounts: Daily login rewards (random coupons).
+
+Food Challenges: “Order 10 different cuisines this month → get free dessert.”
+
+Streaks: Consecutive days of ordering → unlock badges/rewards.
+
+Leaderboard: Top 10 customers of the month get featured (and rewarded).
+
+🌍 6. Community & CSR Features
+
+Food Donation Program: Customers can round up bills → donate meals.
+
+Eco Points: Customers bringing own containers get eco-points redeemable later.
+
+Student Ambassador Program: Recruit brand ambassadors in colleges → free meals + referral incentives.
+
+💳 7. Payment & Smart Discounts
+
+UPI/Wallet Cashback: Integration with Paytm, PhonePe, GPay.
+
+Happy Hours: 3–5 PM snacks at 20% off.
+
+Dynamic Pricing: Lower prices for low-demand hours (smart utilization).
+
+Bundle Deals: Combo packs → e.g., “Biryani + Coke + Dessert @ ₹199.”
+
+📱 8. Mobile App-First Features (Later Stage)
+
+Push Notifications: “Your truck is 2 mins away” or “New Punjabi Thali launched today.”
+
+Social Sharing: Post your Hamshark meals on Instagram with #Hamshark → win freebies.
+
+AR Menu: Point phone → see 3D dish preview.
+
+Voice Ordering: “Hey Hamshark, order my usual.”
+
+📊 9. Business / Backend Features
+
+Fleet Management Dashboard: Monitor truck locations, stock levels, and sales in real time.
+
+Predictive Stocking: AI predicts demand → avoid food waste.
+
+Analytics on Popular Meals: Optimize menu by demand.
+
+Franchise Readiness: Expand to other cities with standardized processes.
+
+🔥 10. Future Growth Ideas
+
+Event Truck Booking: Rent a truck for weddings, fests, or corporate parties.
+
+Cloud Kitchen Tie-up: When trucks are closed, still deliver via kitchen partners.
+
+AI Chatbot: Helps with menu suggestions, order status, FAQs.
+
+Wearable Integrations: Order via smartwatch with one tap.
