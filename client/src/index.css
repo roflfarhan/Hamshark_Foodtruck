@@ -213,4 +213,117 @@
   .progress-bar {
     transition: width 2s ease-in-out;
   }
+
+  /* Print Styles for Receipt */
+  @media print {
+    body {
+      background: white !important;
+      color: black !important;
+    }
+    
+    .receipt-print {
+      max-width: 300px;
+      margin: 0 auto;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      line-height: 1.2;
+      background: white;
+      color: black;
+    }
+    
+    .receipt-header {
+      text-align: center;
+      margin-bottom: 20px;
+      border-bottom: 1px dashed black;
+      padding-bottom: 10px;
+    }
+    
+    .receipt-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 3px;
+      font-size: 11px;
+    }
+    
+    .receipt-total {
+      border-top: 1px dashed black;
+      padding-top: 5px;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    
+    .no-print {
+      display: none !important;
+    }
+  }
+
+  /* Liquid Glass Effects */
+  .liquid-glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 211, 0, 0.3);
+    box-shadow: 
+      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  .liquid-glass:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 211, 0, 0.5);
+    transform: translateY(-2px);
+  }
+
+  /* Neumorphism for icons */
+  .neuro-icon {
+    background: linear-gradient(145deg, rgba(255, 211, 0, 0.1), rgba(255, 140, 0, 0.05));
+    box-shadow: 
+      8px 8px 16px rgba(0, 0, 0, 0.3),
+      -8px -8px 16px rgba(255, 255, 255, 0.02);
+    border-radius: 50%;
+    padding: 12px;
+    transition: all 0.3s ease;
+  }
+
+  .neuro-icon:hover {
+    box-shadow: 
+      4px 4px 8px rgba(0, 0, 0, 0.4),
+      -4px -4px 8px rgba(255, 255, 255, 0.03),
+      inset 2px 2px 4px rgba(255, 211, 0, 0.1);
+  }
+
+  /* Confetti animation */
+  @keyframes confetti-fall {
+    0% {
+      transform: translateY(-100vh) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh) rotate(720deg);
+      opacity: 0;
+    }
+  }
+
+  .confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #FFD300;
+    animation: confetti-fall 3s linear forwards;
+  }
+
+  /* Counter animation */
+  @keyframes count-up {
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .count-up {
+    animation: count-up 0.8s ease-out;
+  }
 }

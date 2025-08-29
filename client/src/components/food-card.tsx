@@ -10,9 +10,40 @@ interface FoodCardProps {
 }
 
 export default function FoodCard({ item, index }: FoodCardProps) {
-  const handleAddToCart = () => {
-    // TODO: Implement cart functionality
-    console.log("Added to cart:", item.name);
+  const handleAddToCart = async () => {
+    try {
+      // Create a sample order for demonstration
+      const orderData = {
+        items: [{
+          menuItemId: item.id,
+          quantity: 1,
+          customizations: {},
+          price: parseFloat(item.price)
+        }],
+        subtotal: item.price,
+        tax: (parseFloat(item.price) * 0.05).toFixed(2),
+        total: (parseFloat(item.price) * 1.05).toFixed(2),
+        status: "confirmed",
+        truckLocation: "Tech Park - Sector 5",
+        userId: null
+      };
+
+      const response = await fetch("/api/orders", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(orderData),
+      });
+
+      if (response.ok) {
+        const order = await response.json();
+        // Navigate to order completion page
+        window.location.href = `/order-completion/${order.id}`;
+      }
+    } catch (error) {
+      console.error("Failed to create order:", error);
+    }
   };
 
   const getSpiceLevelColor = (level: string) => {

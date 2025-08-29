@@ -112,8 +112,8 @@ export default function TruckLocator() {
                     <h4 className="font-semibold" data-testid={`location-name-${index}`}>
                       {location.name}
                     </h4>
-                    <Badge className={getStatusColor(location.currentStatus)}>
-                      {getStatusText(location.currentStatus)}
+                    <Badge className={getStatusColor(location.currentStatus || "closed")}>
+                      {getStatusText(location.currentStatus || "closed")}
                     </Badge>
                   </div>
                   

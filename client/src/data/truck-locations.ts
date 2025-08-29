@@ -46,12 +46,12 @@ export const getLocationsWithinRadius = (
       return {
         ...location,
         distance,
-      };
+      } as LocationWithDistance;
     })
     .filter((location): location is LocationWithDistance => 
-      location !== null && (location.distance || 0) <= radiusKm
+      location !== null && location.distance !== undefined && location.distance <= radiusKm
     )
-    .sort((a, b) => (a.distance || 0) - (b.distance || 0));
+    .sort((a, b) => a.distance - b.distance);
 };
 
 // Filter locations by current status
@@ -60,7 +60,7 @@ export const filterByStatus = (
   status: string
 ): TruckLocation[] => {
   return locations.filter(location => 
-    location.currentStatus.toLowerCase() === status.toLowerCase()
+    (location.currentStatus || "closed").toLowerCase() === status.toLowerCase()
   );
 };
 

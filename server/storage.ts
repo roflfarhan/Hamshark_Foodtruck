@@ -244,6 +244,39 @@ export class MemStorage implements IStorage {
     ];
 
     samplePlans.forEach(plan => this.membershipPlans.set(plan.id, plan));
+
+    // Initialize loyalty rewards
+    const sampleRewards: LoyaltyReward[] = [
+      {
+        id: "reward1",
+        name: "Free Healthy Drink",
+        description: "Complimentary lemon detox water",
+        pointsCost: 50,
+        category: "beverages",
+        tier: "bronze",
+        isActive: true
+      },
+      {
+        id: "reward2", 
+        name: "Free Dessert",
+        description: "Choice of traditional Indian dessert",
+        pointsCost: 100,
+        category: "desserts",
+        tier: "silver",
+        isActive: true
+      },
+      {
+        id: "reward3",
+        name: "Free Meal Coupon",
+        description: "Any meal under ₹300 free",
+        pointsCost: 250,
+        category: "meals",
+        tier: "gold",
+        isActive: true
+      }
+    ];
+
+    sampleRewards.forEach(reward => this.loyaltyRewards.set(reward.id, reward));
   }
 
   // User methods
@@ -307,7 +340,14 @@ export class MemStorage implements IStorage {
 
   async createMenuItem(insertItem: InsertMenuItem): Promise<MenuItem> {
     const id = randomUUID();
-    const item: MenuItem = { ...insertItem, id };
+    const item: MenuItem = { 
+      ...insertItem, 
+      id,
+      isVegetarian: insertItem.isVegetarian ?? false,
+      isVegan: insertItem.isVegan ?? false,
+      spiceLevel: insertItem.spiceLevel ?? "mild",
+      isAvailable: insertItem.isAvailable ?? true
+    };
     this.menuItems.set(id, item);
     return item;
   }
@@ -320,7 +360,9 @@ export class MemStorage implements IStorage {
       ...insertOrder, 
       id, 
       loyaltyPointsEarned,
-      createdAt: new Date()
+      createdAt: new Date(),
+      status: insertOrder.status || "pending",
+      surpriseGifts: insertOrder.surpriseGifts || []
     };
     this.orders.set(id, order);
     
