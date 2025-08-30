@@ -10,8 +10,11 @@ import {
   Settings,
   Star,
   CreditCard,
-  MapPin
+  MapPin,
+  ArrowLeft,
+  Home
 } from "lucide-react";
+import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -315,6 +318,20 @@ export default function Cart() {
           animate={{ opacity: 1, y: 0 }}
           className="mb-8"
         >
+          <div className="flex items-center gap-4 mb-4">
+            <Link href="/">
+              <Button variant="outline" size="sm" data-testid="back-to-home">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Back to Menu
+              </Button>
+            </Link>
+            <Link href="/">
+              <Button variant="ghost" size="sm" data-testid="home-button">
+                <Home className="mr-2 h-4 w-4" />
+                Home
+              </Button>
+            </Link>
+          </div>
           <h1 className="text-4xl font-bold gradient-text mb-2" data-testid="cart-title">
             Your Cart
           </h1>

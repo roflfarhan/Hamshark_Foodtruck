@@ -1,15 +1,19 @@
-import { useParams } from "wouter";
+import { useParams, Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
-import { Check, Heart, Star, Gift, Share2, Download, RotateCcw, Printer, QrCode, Phone, MapPin } from "lucide-react";
+import { Check, Heart, Star, Gift, Share2, Download, RotateCcw, Printer, QrCode, Phone, MapPin, Home, ShoppingCart, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "@/hooks/use-toast";
+import { useState, useEffect } from "react";
+import QRCode from "qrcode";
 import type { Order, MenuItem } from "@shared/schema";
 
 export default function OrderCompletion() {
   const { orderId } = useParams();
+  const [qrCodeUrl, setQrCodeUrl] = useState<string>("");
   
   const { data: order, isLoading } = useQuery<Order>({
     queryKey: ["/api/orders", orderId],
@@ -19,6 +23,38 @@ export default function OrderCompletion() {
   const { data: menuItems = [] } = useQuery<MenuItem[]>({
     queryKey: ["/api/menu"],
   });
+
+  // Generate QR code for order
+  useEffect(() => {
+    const generateQRCode = async () => {
+      if (order) {
+        const orderData = {
+          orderId: order.id,
+          total: order.total,
+          items: order.items?.length || 0,
+          status: order.status,
+          timestamp: new Date().toISOString(),
+          url: `${window.location.origin}/order-completion/${order.id}`
+        };
+        
+        try {
+          const qrUrl = await QRCode.toDataURL(JSON.stringify(orderData), {
+            width: 200,
+            margin: 2,
+            color: {
+              dark: '#000000',
+              light: '#FFD300'
+            }
+          });
+          setQrCodeUrl(qrUrl);
+        } catch (error) {
+          console.error("Error generating QR code:", error);
+        }
+      }
+    };
+
+    generateQRCode();
+  }, [order]);
 
   const handleHealthifyMeIntegration = async () => {
     try {
@@ -137,6 +173,37 @@ export default function OrderCompletion() {
   return (
     <div className="min-h-screen py-20 px-4 bg-gradient-to-br from-background to-secondary">
       <div className="container mx-auto max-w-4xl">
+        {/* Navigation Controls */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-6"
+        >
+          <div className="flex items-center gap-4 mb-4">
+            <Link href="/">
+              <Button variant="outline" size="sm" data-testid="back-to-home">
+                <Home className="mr-2 h-4 w-4" />
+                Home
+              </Button>
+            </Link>
+            <Link href="/cart">
+              <Button variant="outline" size="sm" data-testid="back-to-cart">
+                <ShoppingCart className="mr-2 h-4 w-4" />
+                View Cart
+              </Button>
+            </Link>
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              onClick={() => window.history.back()}
+              data-testid="back-button"
+            >
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back
+            </Button>
+          </div>
+        </motion.div>
+
         {/* Success Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -268,8 +335,22 @@ export default function OrderCompletion() {
             <div className="bg-black/40 p-4 text-center border-t border-primary/20">
               <div className="flex items-center justify-center gap-4">
                 <div className="flex-1">
-                  <QrCode className="h-8 w-8 mx-auto text-primary mb-2" />
-                  <p className="text-xs text-muted-foreground">Scan for digital receipt</p>
+                  {qrCodeUrl ? (
+                    <div className="flex flex-col items-center">
+                      <img 
+                        src={qrCodeUrl} 
+                        alt="Order QR Code" 
+                        className="w-16 h-16 mb-2 rounded border-2 border-primary/20"
+                        data-testid="order-qr-code"
+                      />
+                      <p className="text-xs text-muted-foreground">Scan for order details</p>
+                    </div>
+                  ) : (
+                    <div>
+                      <QrCode className="h-8 w-8 mx-auto text-primary mb-2" />
+                      <p className="text-xs text-muted-foreground">Generating QR code...</p>
+                    </div>
+                  )}
                 </div>
                 <Separator orientation="vertical" className="h-8" />
                 <div className="flex-1">
