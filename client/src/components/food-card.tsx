@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
-import { Plus } from "lucide-react";
+import { Plus, Star, AlertTriangle, Info, Utensils } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 import type { MenuItem } from "@shared/schema";
 
 interface FoodCardProps {
@@ -10,6 +12,9 @@ interface FoodCardProps {
 }
 
 export default function FoodCard({ item, index }: FoodCardProps) {
+  const isChefSpecial = item.tags?.includes("chef-special") || item.tags?.includes("chef's special");
+  const isPopular = item.tags?.includes("popular");
+
   const handleAddToCart = async () => {
     try {
       // Create a sample order for demonstration
@@ -92,7 +97,7 @@ export default function FoodCard({ item, index }: FoodCardProps) {
       viewport={{ once: true }}
       transition={{ delay: index * 0.1 }}
       whileHover={{ y: -5, scale: 1.02 }}
-      className="food-card glass-dark rounded-lg overflow-hidden"
+      className={`food-card glass-dark rounded-lg overflow-hidden ${isChefSpecial ? 'ring-2 ring-yellow-500' : ''}`}
       data-testid={`food-card-${index}`}
     >
       {/* Food Image */}
@@ -106,16 +111,28 @@ export default function FoodCard({ item, index }: FoodCardProps) {
             target.src = `https://via.placeholder.com/400x300/1a1a1a/FFD300?text=${encodeURIComponent(item.name)}`;
           }}
         />
-        <div className="absolute top-2 right-2">
+        <div className="absolute top-2 right-2 flex gap-2">
           <Badge className={item.isVegetarian ? "bg-green-500" : "bg-red-500"}>
             {item.isVegetarian ? "VEG" : "NON-VEG"}
           </Badge>
+          {isChefSpecial && (
+            <Badge className="bg-yellow-500 text-black">
+              <Star className="mr-1 h-3 w-3" />
+              Chef's Choice
+            </Badge>
+          )}
+          {isPopular && (
+            <Badge className="bg-red-500">
+              <Star className="mr-1 h-3 w-3" />
+              Popular
+            </Badge>
+          )}
         </div>
       </div>
 
-      <div className="p-4">
+      <div className="p-4 space-y-3">
         {/* Item Name and Description */}
-        <div className="mb-3">
+        <div>
           <h3 className="font-bold text-lg mb-1" data-testid={`food-name-${index}`}>
             {item.name}
           </h3>
@@ -124,43 +141,113 @@ export default function FoodCard({ item, index }: FoodCardProps) {
           </p>
         </div>
 
-        {/* Price and Nutrition */}
-        <div className="flex justify-between items-center mb-3">
-          <span className="text-primary font-bold text-lg" data-testid={`food-price-${index}`}>
+        {/* Price and Cuisine */}
+        <div className="flex justify-between items-center">
+          <span className="text-primary font-bold text-xl" data-testid={`food-price-${index}`}>
             ₹{item.price}
           </span>
-          {item.nutrition && (
-            <div className="text-xs text-muted-foreground">
-              <span data-testid={`food-nutrition-${index}`}>
-                {item.nutrition.calories} kcal | P: {item.nutrition.protein}g | 
-                C: {item.nutrition.carbs}g | F: {item.nutrition.fat}g
-              </span>
-            </div>
-          )}
+          <Badge variant="outline" className="text-xs">
+            {item.cuisine}
+          </Badge>
         </div>
 
-        {/* Tags */}
-        {item.tags && item.tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-3">
-            {item.tags.slice(0, 3).map((tag, tagIndex) => (
-              <Badge
-                key={tagIndex}
-                className={`${getTagColor(tag)} text-white text-xs`}
-                data-testid={`food-tag-${index}-${tagIndex}`}
-              >
-                {tag}
-              </Badge>
-            ))}
-            {item.spiceLevel && (
-              <Badge
-                className={`${getSpiceLevelColor(item.spiceLevel)} text-white text-xs`}
-                data-testid={`food-spice-${index}`}
-              >
-                {item.spiceLevel}
-              </Badge>
-            )}
+        {/* Detailed Nutrition Information */}
+        {item.nutrition && (
+          <div className="bg-muted/20 rounded-lg p-3 space-y-2">
+            <h4 className="text-sm font-semibold flex items-center">
+              <Info className="mr-1 h-3 w-3" />
+              Nutrition per serving
+            </h4>
+            <div className="grid grid-cols-2 gap-2 text-xs">
+              <div className="flex justify-between">
+                <span>Calories:</span>
+                <span className="font-medium" data-testid={`food-calories-${index}`}>{item.nutrition.calories} kcal</span>
+              </div>
+              <div className="flex justify-between">
+                <span>Protein:</span>
+                <span className="font-medium">{item.nutrition.protein}g</span>
+              </div>
+              <div className="flex justify-between">
+                <span>Carbs:</span>
+                <span className="font-medium">{item.nutrition.carbs}g</span>
+              </div>
+              <div className="flex justify-between">
+                <span>Fat:</span>
+                <span className="font-medium">{item.nutrition.fat}g</span>
+              </div>
+              {item.nutrition.fiber && (
+                <div className="flex justify-between">
+                  <span>Fiber:</span>
+                  <span className="font-medium">{item.nutrition.fiber}g</span>
+                </div>
+              )}
+              {item.nutrition.sodium && (
+                <div className="flex justify-between">
+                  <span>Sodium:</span>
+                  <span className="font-medium">{item.nutrition.sodium}mg</span>
+                </div>
+              )}
+            </div>
           </div>
         )}
+
+        {/* Ingredients */}
+        {item.ingredients && item.ingredients.length > 0 && (
+          <div className="space-y-2">
+            <h4 className="text-sm font-semibold flex items-center">
+              <Utensils className="mr-1 h-3 w-3" />
+              Ingredients
+            </h4>
+            <p className="text-xs text-muted-foreground">
+              {item.ingredients.join(", ")}
+            </p>
+          </div>
+        )}
+
+        {/* Allergen Information */}
+        {item.allergens && item.allergens.length > 0 && (
+          <div className="space-y-2">
+            <h4 className="text-sm font-semibold flex items-center text-orange-500">
+              <AlertTriangle className="mr-1 h-3 w-3" />
+              Contains Allergens
+            </h4>
+            <div className="flex flex-wrap gap-1">
+              {item.allergens.map((allergen, allergenIndex) => (
+                <Badge
+                  key={allergenIndex}
+                  variant="destructive"
+                  className="text-xs"
+                  data-testid={`food-allergen-${index}-${allergenIndex}`}
+                >
+                  {allergen}
+                </Badge>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <Separator />
+
+        {/* Tags and Spice Level */}
+        <div className="flex flex-wrap gap-2">
+          {item.tags && item.tags.slice(0, 3).map((tag, tagIndex) => (
+            <Badge
+              key={tagIndex}
+              className={`${getTagColor(tag)} text-white text-xs`}
+              data-testid={`food-tag-${index}-${tagIndex}`}
+            >
+              {tag}
+            </Badge>
+          ))}
+          {item.spiceLevel && (
+            <Badge
+              className={`${getSpiceLevelColor(item.spiceLevel)} text-white text-xs`}
+              data-testid={`food-spice-${index}`}
+            >
+              🌶️ {item.spiceLevel}
+            </Badge>
+          )}
+        </div>
 
         {/* Add to Cart Button */}
         <Button
