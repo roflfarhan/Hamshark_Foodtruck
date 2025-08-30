@@ -7,6 +7,7 @@ import MembershipPlans from "@/components/membership-plans";
 import Testimonials from "@/components/testimonials";
 import CSRSection from "@/components/csr-section";
 import Footer from "@/components/footer";
+import CartButton from "@/components/cart-button";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <Testimonials />
       <CSRSection />
       <Footer />
+      <CartButton />
     </div>
   );
 }

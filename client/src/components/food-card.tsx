@@ -15,40 +15,33 @@ export default function FoodCard({ item, index }: FoodCardProps) {
   const isChefSpecial = item.tags?.includes("chef-special") || item.tags?.includes("chef's special");
   const isPopular = item.tags?.includes("popular");
 
-  const handleAddToCart = async () => {
-    try {
-      // Create a sample order for demonstration
-      const orderData = {
-        items: [{
-          menuItemId: item.id,
-          quantity: 1,
-          customizations: {},
-          price: parseFloat(item.price)
-        }],
-        subtotal: item.price,
-        tax: (parseFloat(item.price) * 0.05).toFixed(2),
-        total: (parseFloat(item.price) * 1.05).toFixed(2),
-        status: "confirmed",
-        truckLocation: "Tech Park - Sector 5",
-        userId: null
-      };
+  const handleAddToCart = () => {
+    // Get existing cart from localStorage
+    const existingCart = localStorage.getItem("hamshark-cart");
+    const cart = existingCart ? JSON.parse(existingCart) : [];
 
-      const response = await fetch("/api/orders", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(orderData),
-      });
+    // Create cart item
+    const cartItem = {
+      id: `cart-${Date.now()}-${item.id}`,
+      menuItem: item,
+      quantity: 1,
+      customizations: {},
+      price: parseFloat(item.price)
+    };
 
-      if (response.ok) {
-        const order = await response.json();
-        // Navigate to order completion page
-        window.location.href = `/order-completion/${order.id}`;
-      }
-    } catch (error) {
-      console.error("Failed to create order:", error);
+    // Add to cart
+    cart.push(cartItem);
+    localStorage.setItem("hamshark-cart", JSON.stringify(cart));
+
+    // Show success message (if toast is available)
+    if (typeof window !== 'undefined' && window.dispatchEvent) {
+      window.dispatchEvent(new CustomEvent('cart-updated', { 
+        detail: { item: item.name, action: 'added' }
+      }));
     }
+
+    // Navigate to cart
+    window.location.href = '/cart';
   };
 
   const getSpiceLevelColor = (level: string) => {

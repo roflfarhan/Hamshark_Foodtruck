@@ -5,12 +5,14 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
+import Cart from "@/pages/cart";
 import OrderCompletion from "@/pages/order-completion";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/cart" component={Cart} />
       <Route path="/order-completion/:orderId" component={OrderCompletion} />
       <Route component={NotFound} />
     </Switch>
