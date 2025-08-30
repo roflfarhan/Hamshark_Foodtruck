@@ -1,0 +1,157 @@
+# Requirement Document (RD) for Hamshark Food Truck Web Application
+
+---
+
+## 📝 Project Overview
+
+Hamshark is a modern food truck–based startup designed to serve students and IT professionals who stay away from home-cooked meals. The startup will focus on customizable, hygienic, and health-focused Indian and subcontinental cuisines, with nutrition transparency and integrations with health platforms. The brand identity reflects **Hams (purity/cleanliness) and Shark (speed/efficiency), operating food trucks within a **5 km delivery/pickup radius.
+
+The web application will provide a modern responsive UI (black & yellow theme with liquid glass effect), enabling users to explore menus, place and customize orders, earn loyalty points, and integrate meals with fitness apps.
+
+---
+
+## 🎨 UI/UX Design Requirements
+
+•⁠  ⁠*Color Scheme*: Black & Yellow as primary, with secondary accent colors (white, grey, orange).
+•⁠  ⁠*Design Style*: Minimalist, modern, responsive.
+•⁠  ⁠*Effects*: Liquid Glass/Translucent UI, soft shadows, rounded corners.
+•⁠  ⁠*3D Elements*: Food illustrations (rotatable 3D thali, dosa, biryani, etc.).
+•⁠  ⁠*Animations*: Smooth transitions for menus, cart updates, and buttons.
+•⁠  ⁠*Custom Logo*: Shark wearing a chef’s hat inside a food truck.
+•⁠  ⁠*Dark Mode*: Optional toggle with premium finish.
+
+---
+
+## 📂 Website Structure
+
+1.⁠ ⁠*Homepage*
+
+   * Hero section with animated truck, brand tagline.
+   * Live truck location tracker.
+   * Quick link to menu.
+
+2.⁠ ⁠*Menu Page*
+
+   * Cuisine Categories (20+ items each):
+
+     * North Indian
+     * South Indian
+     * Bengali
+     * Gujarati
+     * Punjabi
+     * Maharashtrian
+     * Rajasthani
+     * Mughlai
+     * Street Food
+     * Beverages & Desserts
+   * Each item shows:
+
+     * Ingredients
+     * Nutrition (calories, protein, carbs, fat)
+     * Additives (if any)
+     * Price
+   * Allergen filters (nut-free, dairy-free, gluten-free).
+   * Chef’s recommendation badges.
+
+3.⁠ ⁠*Cart Page*
+
+   * Functional cart with edit/remove options.
+   * Customize Your Meal: “Make Your Own Thali/Bowl.”
+   * Macro calculator (live nutrition update).
+   * Price breakdown, taxes, discounts.
+   * Apply loyalty points & coupons.
+
+4.⁠ ⁠*Checkout Page*
+
+   * Payment integration (UPI, cards, wallets, Razorpay, Stripe, Paytm).
+   * Split bill option for groups.
+   * Email/SMS receipt with loyalty points earned.
+
+5.⁠ ⁠*Booking Completion Page*
+
+   * Order summary with nutrition details.
+   * Loyalty points earned.
+   * HealthifyMe/Fitbit/Apple Health sync.
+   * Gift eligibility depending on bill value.
+
+6.⁠ ⁠*Loyalty & Membership Page*
+
+   * Gamified rewards system.
+   * Tiered memberships (Bronze, Silver, Gold).
+   * Referral program with points.
+
+7.⁠ ⁠*Live Location Tracker Page*
+
+   * Google Maps API integration.
+   * Real-time truck location within 5 km radius.
+   * Dynamic slots showing availability.
+
+8.⁠ ⁠*Admin & Analytics Dashboard* (Internal)
+
+   * Inventory management.
+   * Truck fleet management.
+   * Order and sales analytics.
+   * Customer behavior and preferences tracking.
+
+---
+
+## 🚀 Functional Requirements
+
+### Core (Phase 1)
+
+•⁠  ⁠Responsive website with modern black & yellow theme.
+•⁠  ⁠Live menu with 20+ dishes per cuisine.
+•⁠  ⁠Nutrition and macro details for each dish.
+•⁠  ⁠Add to cart, edit cart, customize thali/bowl.
+•⁠  ⁠Payment integrations (UPI, wallets, cards).
+•⁠  ⁠Order summary with nutrition tracking.
+•⁠  ⁠Loyalty points system & referral program.
+•⁠  ⁠Live truck tracking (Google Maps API).
+•⁠  ⁠Email/SMS confirmations.
+
+### Advanced (Phase 2)
+
+•⁠  ⁠AI-powered meal recommendations based on health goals.
+•⁠  ⁠AR food preview (portion size before ordering).
+•⁠  ⁠Smart cart with live macro updates.
+•⁠  ⁠Subscription model (daily/weekly meal plans).
+•⁠  ⁠Gamified foodie leaderboard.
+•⁠  ⁠Push notifications (truck nearby, new dishes).
+•⁠  ⁠Social media integration (Instagram reels, reviews).
+•⁠  ⁠Pre-booking for pickup.
+•⁠  ⁠Group order bill-splitting.
+
+---
+
+## ⚙ Technical Integrations
+
+•⁠  ⁠*Payments*: Razorpay, Stripe, Paytm, UPI.
+•⁠  ⁠*Delivery*: Swiggy & Zomato API integration.
+•⁠  ⁠*Health*: HealthifyMe, Fitbit, Apple Health.
+•⁠  ⁠*Maps*: Google Maps API for live truck tracking.
+•⁠  ⁠*Email/SMS*: EmailJS or Twilio for notifications.
+
+---
+
+## 🎁 Unique Features to Differentiate Hamshark
+
+•⁠  ⁠Customizable healthy thalis with real-time macros.
+•⁠  ⁠Loyalty + gamification for stronger retention.
+•⁠  ⁠Gifts/freebies for order milestones.
+•⁠  ⁠Transparent nutrition & additive listing.
+•⁠  ⁠Fitness app integration for lifestyle sync.
+•⁠  ⁠Community-building via reviews, social media, foodie leaderboard.
+
+---
+
+## 📈 Future Roadmap
+
+•⁠  ⁠Expand into multiple trucks across metro cities.
+•⁠  ⁠Add AR food ordering experience.
+•⁠  ⁠Partner with gyms & hostels for meal subscriptions.
+•⁠  ⁠Introduce Hamshark App (iOS & Android).
+•⁠  ⁠AI-driven truck placement suggestions based on demand.
+
+---
+
+✅ With this RD, Hamshark will provide healthy, fast, customizable food with modern digital experience for students and professionals, standing out from traditional food trucks and cloud kitchens.
